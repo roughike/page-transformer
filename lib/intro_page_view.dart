@@ -6,21 +6,21 @@ import 'package:page_transformer/page_transformer.dart';
 class IntroPageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      body: new Center(
-        child: new SizedBox.fromSize(
+    return Scaffold(
+      body: Center(
+        child: SizedBox.fromSize(
           size: const Size.fromHeight(500.0),
-          child: new PageTransformer(
+          child: PageTransformer(
             pageViewBuilder: (context, visibilityResolver) {
-              return new PageView.builder(
-                controller: new PageController(viewportFraction: 0.85),
+              return PageView.builder(
+                controller: PageController(viewportFraction: 0.85),
                 itemCount: sampleItems.length,
                 itemBuilder: (context, index) {
                   final item = sampleItems[index];
                   final pageVisibility =
                       visibilityResolver.resolvePageVisibility(index);
 
-                  return new IntroPageItem(
+                  return IntroPageItem(
                     item: item,
                     pageVisibility: pageVisibility,
                   );

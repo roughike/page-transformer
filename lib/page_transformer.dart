@@ -25,7 +25,7 @@ class PageVisibilityResolver {
     final double visiblePageFraction =
         _calculateVisiblePageFraction(pageIndex, pagePosition);
 
-    return new PageVisibility(
+    return PageVisibility(
       visibleFraction: visiblePageFraction,
       pagePosition: pagePosition,
     );
@@ -100,7 +100,7 @@ class PageTransformer extends StatefulWidget {
   final PageViewBuilder pageViewBuilder;
 
   @override
-  _PageTransformerState createState() => new _PageTransformerState();
+  _PageTransformerState createState() => _PageTransformerState();
 }
 
 class _PageTransformerState extends State<PageTransformer> {
@@ -109,15 +109,15 @@ class _PageTransformerState extends State<PageTransformer> {
   @override
   Widget build(BuildContext context) {
     final pageView = widget.pageViewBuilder(
-        context, _visibilityResolver ?? new PageVisibilityResolver());
+        context, _visibilityResolver ?? PageVisibilityResolver());
 
     final controller = pageView.controller;
     final viewPortFraction = controller.viewportFraction;
 
-    return new NotificationListener<ScrollNotification>(
+    return NotificationListener<ScrollNotification>(
       onNotification: (ScrollNotification notification) {
         setState(() {
-          _visibilityResolver = new PageVisibilityResolver(
+          _visibilityResolver = PageVisibilityResolver(
             metrics: notification.metrics,
             viewPortFraction: viewPortFraction,
           );

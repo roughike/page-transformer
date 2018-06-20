@@ -18,11 +18,11 @@ class IntroPageItem extends StatelessWidget {
   }) {
     final double xTranslation = pageVisibility.pagePosition * translationFactor;
 
-    return new Opacity(
+    return Opacity(
       opacity: pageVisibility.visibleFraction,
-      child: new Transform(
+      child: Transform(
         alignment: FractionalOffset.topLeft,
-        transform: new Matrix4.translationValues(
+        transform: Matrix4.translationValues(
           xTranslation,
           0.0,
           0.0,
@@ -33,10 +33,10 @@ class IntroPageItem extends StatelessWidget {
   }
 
   _buildTextContainer(BuildContext context) {
-    final TextTheme textTheme = Theme.of(context).textTheme;
-    final categoryText = _applyTextEffects(
+    var textTheme = Theme.of(context).textTheme;
+    var categoryText = _applyTextEffects(
       translationFactor: 300.0,
-      child: new Text(
+      child: Text(
         item.category,
         style: textTheme.caption.copyWith(
           color: Colors.white70,
@@ -48,11 +48,11 @@ class IntroPageItem extends StatelessWidget {
       ),
     );
 
-    final titleText = _applyTextEffects(
+    var titleText = _applyTextEffects(
       translationFactor: 200.0,
-      child: new Padding(
+      child: Padding(
         padding: const EdgeInsets.only(top: 16.0),
-        child: new Text(
+        child: Text(
           item.title,
           style: textTheme.title
               .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
@@ -61,11 +61,11 @@ class IntroPageItem extends StatelessWidget {
       ),
     );
 
-    return new Positioned(
+    return Positioned(
       bottom: 56.0,
       left: 32.0,
       right: 32.0,
-      child: new Column(
+      child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           categoryText,
@@ -77,18 +77,18 @@ class IntroPageItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final image = new Image.asset(
+    var image = Image.asset(
       item.imageUrl,
       fit: BoxFit.cover,
-      alignment: new FractionalOffset(
+      alignment: FractionalOffset(
         0.5 + (pageVisibility.pagePosition / 3),
         0.5,
       ),
     );
 
-    final imageOverlayGradient = new DecoratedBox(
-      decoration: new BoxDecoration(
-        gradient: new LinearGradient(
+    var imageOverlayGradient = DecoratedBox(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
           begin: FractionalOffset.bottomCenter,
           end: FractionalOffset.topCenter,
           colors: [
@@ -99,15 +99,15 @@ class IntroPageItem extends StatelessWidget {
       ),
     );
 
-    return new Padding(
+    return Padding(
       padding: const EdgeInsets.symmetric(
         vertical: 16.0,
         horizontal: 8.0,
       ),
-      child: new Material(
+      child: Material(
         elevation: 4.0,
-        borderRadius: new BorderRadius.circular(8.0),
-        child: new Stack(
+        borderRadius: BorderRadius.circular(8.0),
+        child: Stack(
           fit: StackFit.expand,
           children: [
             image,
